@@ -1,0 +1,25 @@
+# The ignore list - Ramlaal (The AI)
+# ----
+# 1. Ignoring the tests and cache files as well as directories.
+# 2. Ignoring the databases and json files as well as directories.
+# ----
+
+# Ignoring the python virtual environment files
+env/
+
+# Ignoring the test files as well as directories
+tests/
+test/
+
+# Ignoring the cachce files as well as directories
+__pycache__/
+
+# Ignoring the databases and JSON files as well as directories
+databases/
+db/
+json/
+data/
+*.database
+*.sqlite3
+*.db
+*.json
