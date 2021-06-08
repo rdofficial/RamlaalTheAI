@@ -1,0 +1,22 @@
+#!/bin/bash
+# ----
+# setup - Ramlaal (The AI)
+#
+# The automated installation script / setup script for the entire Ramlaal project. This script when run installs all the required software utilities as well as the python3 external library dependencies. In short, this script sets up the environment on a local machine for running our project properly
+#
+#
+# Author : Rishav Das (https://github.com/rdofficial/)
+# Created on : June 8, 2021
+#
+# Last modified by : -
+# Last modified on : -
+#
+# Authors contributed to this script (Add your name below if you have contributed) :
+# 1. Rishav Das (github:https://github.com/rdofficial/, email:rdofficial192@gmail.com)
+# ----
+
+# Installing the required software utilities using apt
+sudo apt install espeak ffmpeg libespeak1 alsa-utils
+
+# Installing the required python3 modules
+pip3 install pyttsx3
