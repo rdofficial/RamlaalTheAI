@@ -15,7 +15,7 @@ Last modified by : Rishav Das (https://github.com/rdofficial/)
 Last modified on : June 9, 2021
 
 Changes made in the last modification:
-1. Added the code to serve the functionality of clear screen / console / storage.
+1. Added the documenatation (__doc__) for the speak() function.
 
 Authors contributed to this script (Add your name below if you have contributed) :
 1. Rishav Das (github:https://github.com/rdofficial/, email:rdofficial192@gmail.com)
@@ -37,7 +37,7 @@ except Exception as e:
 	exit()
 
 def speak(text, speaker = 'Ramlaal'):
-	""" """
+	""" The function which serves the functionality of text to speech output via computer speakers. This function takes two arguments as input. They are : text, speaker. The text argument is used to specify the text (strings) which are to be spoken via computer. The speaker argument is used to specify the speaker of those lines. These data are also displayed (printed) on the console screen like subtitles after the computer speaks it (Just for sake of user). The function uses some code which are dependent on the pyttsx3 library. Thus, pyttsx3 becomes an dependency. """
 
 	# Defining the engine for the speech by which the AI will speak the output or any kind of message to the user
 	engine = pyttsx3.init()
