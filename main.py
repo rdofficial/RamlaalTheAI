@@ -12,10 +12,10 @@ Author : Rishav Das (https://github.com/rdofficial/)
 Created on : June 7, 2021
 
 Last modified by : Rishav Das (https://github.com/rdofficial/)
-Last modified on : June 8, 2021
+Last modified on : June 9, 2021
 
 Changes made in the last modification:
-1. Added the main user commands input section for our AI. Currently just serving commands of playing music as well as exiting the program execution.
+1. Added the code to serve the functionality of clear screen / console / storage.
 
 Authors contributed to this script (Add your name below if you have contributed) :
 1. Rishav Das (github:https://github.com/rdofficial/, email:rdofficial192@gmail.com)
@@ -26,6 +26,7 @@ try:
 	# Importing the pre-installed modules
 	from datetime import datetime
 	from webbrowser import open as webOpen
+	from os import system as cmd, path, remove, listdir
 
 	# Importing the externally installed libraries
 	import pyttsx3
@@ -90,6 +91,8 @@ def main():
 		text = input('Your input> ')
 
 		# Checking the user input
+		# PLAY COMMAND
+		# ----
 		if 'play' in text.lower():
 			# If the term "play" is mentioned in the user input, then we continue to check further
 
@@ -128,6 +131,53 @@ def main():
 
 					speak('There is some problem. Perhaps, you entered an invalid option. Let\'s proceed to the next command.')
 					continue
+		# ----
+
+		# CLEAR COMMAND
+		# ----
+		elif 'clear' in text.lower():
+			# If the term "clear" is mentioned in the user input, then we continue
+
+			if 'screen' in text.lower() or 'scr' in text.lower() or 'display' in text.lower() or 'console' in text.lower():
+				# If the terms "screen" / "display" / "scr" are mentioned in the user input, then we clear the console screen
+
+				speak('Clearing the fucking console screen')
+				cmd('clear')
+				continue
+			elif 'storage' in text.lower():
+				# If the term "storage" is mentioned in the user input, then we continue to do so
+
+				speak('Master! As you asked to clear the storage. Let\'s do this. What kind of files you want to clear, mention the extensions below. Seperate two extensions with an whitespace.')
+				text = input('Enter the extensions : ')
+				extensions = text.split(' ')
+				text = input('Enter the directory location : ')
+				if path.isdir(text):
+					# If the directory location specified by the user exists, then we continue
+
+					speak(f'We are deleting the filtered extensions file in the directory {text}.')
+					for filename in listdir(text):
+						# Iterating over each file to filter and check
+
+						for extension in extensions:
+							if extension[0] == '.':
+								extension = extension[1:]
+							if filename[len(filename) - len(extension):] == extension:
+								remove(f'{text}/{filename}')
+								speak(f'Deleted the file {filename}')
+				else:
+					# If the directory location specified by the user does not exist, then we continue
+
+					speak('What the fuck! The directory location you specified is not found on this computer machine. Check the input again, master. Let\'s proceed to the next command.')
+					continue
+			else:
+				# If any recongizable term after "clear" is not filtered in the user input, then we say the error to the user
+
+				speak('Master! You have mentioned the term clear. But, unfortunately, we couldn\'t confirm what exactly you want to clear. Let\'s proceed to the next command.')
+				continue
+		# ----
+
+		# EXIT COMMAND
+		# ----
 		elif 'exit' in text.lower():
 			# If the term "exit" is mentioned in the user input, then we exit the script
 
@@ -149,6 +199,7 @@ def main():
 
 				speak('The decision input of yours is quite unrecongizable. But as an experience and computer machine, I guess we should continue serving is what you wanted to say.')
 				continue
+		# ----
 
 if __name__ == '__main__':
 	try:
