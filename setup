@@ -8,15 +8,47 @@
 # Author : Rishav Das (https://github.com/rdofficial/)
 # Created on : June 8, 2021
 #
-# Last modified by : -
-# Last modified on : -
+# Last modified by : Rishav Das (https://github.com/rdofficial/)
+# Last modified on : June 9, 2021
+#
+# Changes made in the last modification:
+# 1. Added the code which serves the functionality of banner printing at the script launch, python3 package checker, virtual environment creation.
 #
 # Authors contributed to this script (Add your name below if you have contributed) :
 # 1. Rishav Das (github:https://github.com/rdofficial/, email:rdofficial192@gmail.com)
 # ----
 
-# Installing the required software utilities using apt
+# THE BANNER OF THE SETUP
+echo -e "[---------------- \033[01;93mSetup - \033[92mRamlaal \033[01;97m(The AI)\033[00m ----------------]\n"
+
+# INSTALLING THE REQUIRED SOFTWARE UTILITIES (PACKAGES)
 sudo apt install espeak ffmpeg libespeak1 alsa-utils
 
-# Installing the required python3 modules
-pip3 install pyttsx3
+# SETTING UP THE ENVIRONMENT FOR PYTHON3 DEVELOPEMENT / TESTING / USAGE
+# ----
+# Checking whether python3 is installed or not
+if [[ -z $( whereis python3 ) ]]; then
+	# If the python3 software package is not installed on the linux machine, then we display the error message on the console screen and exit
+
+	echo -e "[\033[91m!\033[00m] \033[01;97mpython3\033[00m package is not installed"
+	exit
+fi
+
+# Asking the user for either installling in virtual environment or in the global
+printf "Should we create a separate \033[93mvirtual py-environment\033[00m or install in the \033[93mglobal environment\033[00m (Y/N) : "
+read -p choice
+if [[ $choice == "Y" ]] || [[ $choice == "yes" ]] || [ $choice == "YES" ]]; then
+	# If the user choosed to install the dependencies in the virtual environment, then we continue
+
+	# Creating the virtual environment and then activating it
+	python3 -m venv env
+	source env/bin/activate
+
+	# Installing the required python3 modules
+	pip3 install pyttsx3
+else
+	# If the user choosed to install the dependencies in the global environment, then we continue
+
+	# Installing the required python3 libraries
+	pip3 install pyttsx3
+# ----
